@@ -1,4 +1,4 @@
-# CIU_3
+# CIU - Práctica 3
 
 Autor: Héctor Miguel Martín Álvarez
 
