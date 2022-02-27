@@ -1,6 +1,5 @@
 abstract class AstronomicalObject {
  
-  float radius;
   float speed;
   float rotation = 0.001;
   PVector vector;

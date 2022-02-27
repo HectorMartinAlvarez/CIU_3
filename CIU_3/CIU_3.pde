@@ -66,18 +66,15 @@ void setup(){
 void draw(){
   background(starsTexture);
   textAlign(LEFT);
-  text("W - Move Up",width-1180,height-120);
-  text("A - Move Left",width-1180,height-100);
-  text("S - Move Down",width-1180,height-80);
-  text("D - Move Rigth",width-1180,height-60);
-  text("Mouse Wheel Up - Zoom In",width-1180,height-40);
-  text("Mouse Wheel Down - Zoom Out",width-1180,height-20);
+  textSize(20);
+  text("Mouse Wheel Up - Zoom In",width-1180,height-60);
+  text("Mouse Wheel Down - Zoom Out",width-1180,height-40);
+  text("ESC - Exit",width-1180,height-20);
   
   translate(width/2, height/2,0); 
   scale(l);
   
-  rotateX(rotateX);
-  rotateY(rotateY);
+  rotateX(radians(-20));
   
   sun.show();
   mercury.show();
@@ -107,47 +104,5 @@ void mouseWheel(MouseEvent event) {
   }else{
     if(l < 0.02) return;
     l-=0.02;
-  }
-}
-
-void keyPressed(){
-  switch(key){
-    case 'w':
-    case 'W':
-      up = true;
-      break;
-    case 'a':
-    case 'A':
-      left = true;
-      break;
-    case 's':
-    case 'S':
-      down = true;
-      break;
-    case 'd':
-    case 'D':
-      rigth = true;
-      break;
-  }
-}
-
-void keyReleased(){
-  switch(key){
-    case 'w':
-    case 'W':
-      up = false;
-      break;
-    case 'a':
-    case 'A':
-      left = false;
-      break;
-    case 's':
-    case 'S':
-      down = false;
-      break;
-    case 'd':
-    case 'D':
-      rigth = false;
-      break;
   }
 }
