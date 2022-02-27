@@ -17,18 +17,16 @@ PImage starsTexture;
 
 float scale = 1.0;
 float rotateY = 0.0;
-float rotateX = 0.0;
 
-boolean up = false;
-boolean down = false;
 boolean left = false;
 boolean rigth = false;
 
 float l = 1.0;
 
 void setup(){
+  
   size(1200,600,P3D);
-  surface.setResizable(false); //<>//
+  surface.setResizable(false);
   
   PImage sunTexture = loadImage("./textures/2k_sun.jpg");
   starsTexture = loadImage("./textures/2k_stars_milky_way.jpg");
@@ -48,7 +46,7 @@ void setup(){
   fobos = new Satellite(10.0, -0.03, new PVector(250, 30, 0),"Phobos", fobosTexture);
   deimos = new Satellite(10.0, -0.025, new PVector(500, 30, 0),"Deimos", deimosTexture);
   
-  sun = new Planet(200.0, 0.001, new PVector(0, 230, 0),"Sun", sunTexture,null); // Sí, estrella. No, planeta //<>//
+  sun = new Planet(200.0, 0.001, new PVector(0, 230, 0),"Sun", sunTexture,null); // Sí, estrella. No, planeta
   mercury = new Planet(20.0, 0.01, new PVector(1000, 50, 0),"Mercury", mercuryTexture,null);
   venus = new Planet(45.0, 0.0035, new PVector(1400, 75, 0),"Venus", venusTexture,null);
   earth = new Planet(40.0, 0.003, new PVector(2100, 70, 0),"The Earth", earthTexture, moon);
@@ -67,6 +65,8 @@ void draw(){
   background(starsTexture);
   textAlign(LEFT);
   textSize(20);
+  text("A - Move Left",width-1180,height-100);
+  text("D - Move Rigth",width-1180,height-80);
   text("Mouse Wheel Up - Zoom In",width-1180,height-60);
   text("Mouse Wheel Down - Zoom Out",width-1180,height-40);
   text("ESC - Exit",width-1180,height-20);
@@ -75,6 +75,7 @@ void draw(){
   scale(l);
   
   rotateX(radians(-20));
+  rotateY(rotateY);
   
   sun.show();
   mercury.show();
@@ -90,19 +91,42 @@ void draw(){
 }
 
 void keyEvent(){
-  if(up) rotateX+= 0.02;
-  if(down) rotateX-= 0.02;
   if(left) rotateY+= 0.02;
   if(rigth) rotateY-= 0.02;
 }
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  println(l);
   if(e < 0){
     l+=0.02;
   }else{
     if(l < 0.02) return;
     l-=0.02;
+  }
+}
+
+void keyPressed(){
+  switch(key){
+    case 'a':
+    case 'A':
+      left = true;
+      break;
+    case 'd':
+    case 'D':
+      rigth = true;
+      break;
+  }
+}
+
+void keyReleased(){
+  switch(key){
+    case 'a':
+    case 'A':
+      left = false;
+      break;
+    case 'd':
+    case 'D':
+      rigth = false;
+      break;
   }
 }
