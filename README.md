@@ -30,4 +30,4 @@ Tecla 'D' gira el sistema hacia la izquierda.
   - Texturas del sol, todos los planetas, la Luna y el fondo https://www.solarsystemscope.com/textures/
   - Texturas de Fobos y Deimos http://www.planetaryvisions.com
 
-![No gif here :(]()
+![No gif here :(](https://github.com/HectorMartinAlvarez/CIU_3/blob/main/CIU_3/animation.gif)
